@@ -9,11 +9,9 @@
         <title>Document</title>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.js"></script>
-      
-    </body>
-
-    </head>
-    <body>
+       </head>
+       <body>
+  
         
     <footer class="text-center bg-dark">
         <div class="container text-white py-4 py-lg-5">
