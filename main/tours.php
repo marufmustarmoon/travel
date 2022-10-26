@@ -1,0 +1,69 @@
+<?php
+
+
+include('dbconnect.php');
+
+
+
+
+
+$sql = "select * from tours ";
+$result = mysqli_query($conn, $sql);
+
+$count = mysqli_num_rows($result);
+
+?>
+<main>
+    <section>
+        <div class="container py-4 py-xl-5">
+            <div class="row mb-5">
+                <div class="col-md-8 col-xl-6 text-center mx-auto">
+                    <h2>Tours</h2>
+                </div>
+            </div>
+            <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
+                <?php
+                if ($count > 0) {
+
+                    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                ?>
+              
+                        <div class="col">
+                            <div class="card"><img class="card-img-top w-100  " style="height: 100px;"  src="./admin/uploaded_img/<?php echo $row['location_image']; ?>">
+                                <div class="card-body p-4">
+                                    <p class="text-primary card-text mb-0">Location: <?php echo $row["tour_location"]; ?></p>
+                                    <h4 class="card-title">Tour id: <?php echo $row["id"]; ?></h4>
+                                    <p class="card-text">Description:<?php echo $row["tour_description"]; ?></p>
+                                    <p class="card-text">Hotel Name:<?php echo $row["hotel_name"]; ?></p>
+                                    <p class="card-text">Total Cost:<?php echo $row["total_cost"]; ?></p>
+                             
+                                    <?php
+                                    // Start the session and get the data
+
+                                    if (isset($_SESSION['user_name'])) {
+                                        
+                                    ?>
+                                    <?php
+                                        
+                                   
+                                        echo '<div class="d-flex"><a href="booking.php" class="btn btn-primary" type="button" style="border-radius: 20px;width: 115px;height: 40px;">Book Now</a></div>';
+                                    } else {
+                                        echo '<div class="d-flex"><a href="register_form.php" class="btn btn-primary" type="button" style="border-radius: 20px;width: 215px;height: 40px;">Register To Book</a></div>';
+                                    }
+                                    ?>
+
+                                </div>
+                            </div>
+                        </div>
+                <?php
+                    }
+                    
+                } else {
+                    echo "<p>No matches found</p>";
+                }
+                ?>
+            </div>
+        </div>
+    </section>
+</main>
+
